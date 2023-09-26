@@ -44,11 +44,3 @@ def generate_combinations(length, characters):
             for combo in generate_combinations(length - 1, characters):
                 yield char + combo
 
-# Example usage:
-
-#generates a randome password of length 5
-password = generate_random_password(2)
-#prints the password to see if the final guses is a match
-print("password is:", password)
-cracked = passwordCrack(password)
-print("the password has been sucesfully cracked in ", cracked[2], " seconds and ", cracked[0], " attempts")
