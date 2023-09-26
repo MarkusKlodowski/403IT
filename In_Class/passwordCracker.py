@@ -47,7 +47,7 @@ def generate_combinations(length, characters):
 # Example usage:
 
 #generates a randome password of length 5
-password = generate_random_password(4)
+password = generate_random_password(2)
 #prints the password to see if the final guses is a match
 print("password is:", password)
 cracked = passwordCrack(password)
