@@ -1,7 +1,7 @@
 import test
 import os
 
-print("Which of the following operations would you like to do? \n 1. Summation of a sequence \n 2. Nth power of a number \n 3. Factorial of a number")
+print("Which of the following operations would you like to do? \n 1. Summation of a sequence \n 2. Nth power of a number \n 3. Factorial of a number \n 4. Exit")
 x = int(input("Enter your choice: "))
 os.system('cls')
 if x == 1:
@@ -27,3 +27,6 @@ elif x == 3:
     print("What number would you like to find the factorial of?")
     y = int(input("Enter your number: "))
     print("Your result: ",test.factorial(y))
+elif x == 4:
+    print("exiting")
+    os.system('cls')

@@ -29,6 +29,7 @@ def diceThrow(diceSize):
 def diceRoll(x):
     return(diceThrow(x) + diceThrow(x))
 
+diceRolls = createDictionary(2,12)
 y = createDictionary(1,20)
 for j in range(1,101):
     y[diceThrow(20)] += 1
