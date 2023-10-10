@@ -1,6 +1,5 @@
 import random
 import os
-import time
 import itertools
 import matplotlib.pyplot as plt
 
@@ -10,7 +9,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 #create a player class that has a hand, money, and a bet
 class Player:
     def __init__(self, hand, money, bet):
-        self.hand = hand
+        self.hand = [hand]
         self.money = money
         self.bet = bet
 
@@ -72,16 +71,19 @@ def updateCount(card, count):
 #---------------------------------------------------------------------------------#
 def isBust(hand):
     handValue = 0
+    count = 0
     for card in hand:
-        if card['rank'] in ['J','Q','K']:
+        if card[count]['rank'] in ['J','Q','K']:
             handValue += 10
-        elif card['rank'] in ['2','3','4','5','6','7','8','9','10']:
-            handValue += int(card['rank'])
-        elif card['rank'] in ['A']:
+        elif card[count]['rank'] in ['2','3','4','5','6','7','8','9','10']:
+            print("value of the card is:",card[count]['rank'])
+            handValue += int(card[count]['rank']) 
+        elif card[count]['rank'] in ['A']:
             if handValue + 11 > 21:
                 handValue += 1
             else:
                 handValue += 11
+        count += 1
     if handValue > 21:
         return True
     else:
@@ -177,16 +179,17 @@ def playHand(deck):
 
 def simulateRound(deck, count, numPlayers):
     #dealers 
-    for i in range(2):
+    for i in range(1):
         dealersCard = Dealer(dealCard(deck))
         if i == 1:
             count += updateCount(dealersCard.hand, count)
     #players
         for j in range(int(numPlayers)):
-            player = Player(playHand(deck), 5000, 100)
-            count += updateCount(player.hand[j-1], count) 
-            print(count, player.hand[j-1]['rank'])
-    
+            player = Player([dealCard(deck)], 5000, 100)
+            if i == 0:
+                player.hand.append(dealCard(deck))
+            print("Player's hand: ", player.hand)
+    print(isBust(player.hand))
     count += updateCount(dealersCard.hand, count)
     return count
 
