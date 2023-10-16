@@ -10,6 +10,10 @@ def hash(password):
 
 def verification(user, password):
     with open("in_Class/userCredentials.txt", "r") as file:
+        user = user.split("@")[0]
+        print(user)
+        if user.split("@")[1] != "coventry.ac.uk":
+            return False
         for line in file:
             if line.strip() == "":
                 # Skip blank lines
